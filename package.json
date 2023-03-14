@@ -2,6 +2,7 @@
   "name": "nikeapp-backend",
   "version": "1.0.0",
   "license": "MIT",
+  "main": "dist/index.js",
   "engines": {
     "node": ">=14"
   },
