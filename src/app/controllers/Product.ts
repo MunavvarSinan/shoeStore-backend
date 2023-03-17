@@ -30,7 +30,7 @@ export const getProduct = async (req: Request, res: Response) => {
       const { productId } = req.params
       console.log(productId)
       const product = await Product.findOne({ id: productId })
-      console.log(product)
+      if (!product) return res.json({ success: false, message: 'No product found' })
       return res.json({ success: true, product })
    } catch (err) {
       console.log(err)
