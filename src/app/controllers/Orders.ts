@@ -4,10 +4,10 @@ import Product from "../models/Product"
 import { Request, Response } from "express"
 
 export const createOrder = async (req: Request, res: Response) => {
-    const { productId, name, email, address, subTotal, deliveryFee, total } = req.body
+    const { productId, name, email, address, subTotal, deliveryFee, total, quantity } = req.body
     const ref = (Math.random() + 1).toString(36).substring(7)
     console.log()
-    const order = await Order.create({ productId, name, email, address, subTotal, deliveryFee, total, ref })
+    const order = await Order.create({ productId, name, email, address, subTotal, deliveryFee, total, quantity, ref })
     return res.json({ success: true, order })
 }
 
