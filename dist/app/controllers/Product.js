@@ -44,7 +44,8 @@ const getProduct = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         const { productId } = req.params;
         console.log(productId);
         const product = yield Product_1.default.findOne({ id: productId });
-        console.log(product);
+        if (!product)
+            return res.json({ success: false, message: 'No product found' });
         return res.json({ success: true, product });
     }
     catch (err) {

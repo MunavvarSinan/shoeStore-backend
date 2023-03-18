@@ -17,6 +17,7 @@ const cors_1 = __importDefault(require("cors"));
 const database_1 = require("./database");
 const product_routes_1 = __importDefault(require("../app/routes/product.routes"));
 const order_routes_1 = __importDefault(require("../app/routes/order.routes"));
+const payment_routes_1 = __importDefault(require("../app/routes/payment.routes"));
 class Application {
     constructor() {
         this.connect = () => __awaiter(this, void 0, void 0, function* () {
@@ -39,6 +40,7 @@ class Application {
                 });
                 this.app.use('/api/product', product_routes_1.default);
                 this.app.use('/api/order', order_routes_1.default);
+                this.app.use('/api/payment', payment_routes_1.default);
                 const port = process.env.PORT || 4000;
                 this.server = this.app.listen(port, () => {
                     console.log(`🚀 Server listening on port ${port}`);

@@ -4,7 +4,7 @@ import { Server } from 'http';
 import { connect } from './database';
 import Product from '../app/routes/product.routes';
 import Order from '../app/routes/order.routes';
-
+import Payment from '../app/routes/payment.routes';
 
 export default class Application {
     public app: express.Application;
@@ -32,6 +32,7 @@ export default class Application {
             );
             this.app.use('/api/product', Product);
             this.app.use('/api/order', Order);
+            this.app.use('/api/payment', Payment);
             const port = process.env.PORT || 4000;
             this.server = this.app.listen(port, () => {
                 console.log(`🚀 Server listening on port ${port}`);

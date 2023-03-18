@@ -16,11 +16,17 @@ exports.getOrder = exports.createOrder = void 0;
 const Orders_1 = __importDefault(require("../models/Orders"));
 const Product_1 = __importDefault(require("../models/Product"));
 const createOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { productId, name, email, address, subTotal, deliveryFee, total } = req.body;
-    const ref = (Math.random() + 1).toString(36).substring(7);
-    console.log();
-    const order = yield Orders_1.default.create({ productId, name, email, address, subTotal, deliveryFee, total, ref });
-    return res.json({ success: true, order });
+    try {
+        const { productId, name, email, address, subTotal, deliveryFee, total, quantity } = req.body;
+        const ref = (Math.random() + 1).toString(36).substring(7);
+        console.log();
+        const order = yield Orders_1.default.create({ productId, name, email, address, subTotal, deliveryFee, total, quantity, ref });
+        return res.json({ success: true, order });
+    }
+    catch (error) {
+        console.log(error);
+        return res.json({ success: false, message: error.message });
+    }
 });
 exports.createOrder = createOrder;
 const getOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
